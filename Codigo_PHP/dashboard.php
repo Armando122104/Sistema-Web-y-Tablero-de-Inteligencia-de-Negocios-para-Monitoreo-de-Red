@@ -118,7 +118,7 @@ if ($rol === 'gerente') {
     
     // Porcentaje de trafico en red de invitados o streaming filtrado
     $sql_inv = "SELECT 
-                    ROUND((SUM(CASE WHEN Red LIKE '%Invitado%' OR Aplicacion_Principal LIKE '%Stream%' OR Aplicacion_Principal LIKE '%Video%' THEN Trafico_Total_GB ELSE 0 END) * 100.0) / NULLIF(SUM(Trafico_Total_GB), 0), 1) AS pct_no_critico
+                    ROUND((SUM(CASE WHEN Red LIKE '%Invitado%' OR Aplicacion_Principal LIKE '%Streaming%' THEN Trafico_Total_GB ELSE 0 END) * 100.0) / NULLIF(SUM(Trafico_Total_GB), 0), 1) AS pct_no_critico
                 FROM vw_telemetria_maestra_bi
                 WHERE $where_sql";
     $stmt_inv = $pdo->prepare($sql_inv);
